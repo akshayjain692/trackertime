@@ -1,10 +1,10 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:time_tracker_app/common_widgets/form_submit_button.dart';
 import 'package:time_tracker_app/common_widgets/show_alert_dialog.dart';
 import 'package:time_tracker_app/services/auth.dart';
-import 'package:time_tracker_app/services/auth_provider.dart';
 import 'package:time_tracker_app/sign_in/validators.dart';
 
 enum EmailSignInType { signIn, register }
@@ -38,7 +38,7 @@ class EmailSignInFormState extends State<EmailSignInForm> {
   }
 
   void _submitButton() async {
-    final auth = AuthProvider.of(context);
+    final auth = Provider.of<AuthBase>(context, listen: false);
     setState(() {
       _submitted = true;
       _isLoading = true;
@@ -69,7 +69,7 @@ class EmailSignInFormState extends State<EmailSignInForm> {
   }
 
   List<Widget> _buildChildren() {
-    final authBase = AuthProvider.of(context);
+    final authBase = Provider.of<AuthBase>(context, listen: false);
     final primaryText =
         _formType == EmailSignInType.signIn ? "Sign In" : "Create an account";
     final secondaryText = _formType == EmailSignInType.signIn
