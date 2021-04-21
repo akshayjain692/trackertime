@@ -30,7 +30,6 @@ class _SignInPageState extends State<SignInPage> {
     try {
       setState(() => _isLoading = true);
       final authBase = Provider.of<AuthBase>(context, listen: false);
-
       await authBase.signInAnonymously();
     } catch (e) {
       _showSignInError(context, e);
