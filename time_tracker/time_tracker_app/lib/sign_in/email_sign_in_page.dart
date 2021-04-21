@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:time_tracker_app/services/auth.dart';
 import 'package:time_tracker_app/sign_in/email_sign_in_form.dart';
 
 class EmailSignInPage extends StatelessWidget {
