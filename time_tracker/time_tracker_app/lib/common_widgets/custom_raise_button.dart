@@ -9,10 +9,10 @@ class CustomRaiseButton extends StatelessWidget {
 
   CustomRaiseButton(
       {this.child,
-        this.color,
-        this.borderRadius: 8.0,
-        this.onPresssed,
-        this.height: 60});
+      this.color,
+      this.borderRadius: 8.0,
+      this.onPresssed,
+      this.height: 60});
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +22,7 @@ class CustomRaiseButton extends StatelessWidget {
         child: child,
         onPressed: onPresssed,
         color: color,
+        disabledColor: color,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(borderRadius))),
       ),
