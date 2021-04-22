@@ -13,7 +13,7 @@ class SignInPage extends StatefulWidget {
 
   static Widget create(BuildContext context)
   {
-    return Provider<SignInBloc>(create: (_)=> SignInBloc(),child: SignInPage(),)
+    return Provider<SignInBloc>(create: (_)=> SignInBloc(),child: SignInPage(),);
   }
   @override
   _SignInPageState createState() => _SignInPageState();
