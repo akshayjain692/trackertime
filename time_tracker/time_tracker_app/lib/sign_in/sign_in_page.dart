@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:time_tracker_app/common_widgets/show_alert_dialog.dart';
 import 'package:time_tracker_app/services/auth.dart';
 import 'package:time_tracker_app/sign_in/email_sign_in_page.dart';
+import 'package:time_tracker_app/sign_in/sign_in_bloc.dart';
 import 'package:time_tracker_app/sign_in/sign_in_button.dart';
 import 'package:time_tracker_app/sign_in/social_sign_in_button.dart';
 
-class SignInPage extends StatelessWidget {
+class SignInPage extends StatefulWidget {
+  static Widget create(BuildContext context)
+  {
+    return Provider<SignInBloc>(create: (_)=> SignInBloc(),child: SignInPage(),)
+  }
+  @override
+  _SignInPageState createState() => _SignInPageState();
+}
+
+class _SignInPageState extends State<SignInPage> {
   Future<void> _signInAnonymosuly(BuildContext context) async {
     try {
       final authBase = Provider.of<AuthBase>(context, listen: false);
@@ -15,7 +26,7 @@ class SignInPage extends StatelessWidget {
   }
 
   void _signInWithEmail(BuildContext context) {
-    final authBase = Provider.of<AuthBase>(context, listen: false);
+    //final authBase = Provider.of<AuthBase>(context, listen: false);
 
     Navigator.of(context).push(MaterialPageRoute<void>(
       fullscreenDialog: true,
@@ -34,7 +45,10 @@ class SignInPage extends StatelessWidget {
     try {
       final authBase = Provider.of<AuthBase>(context, listen: false);
       await authBase.signInWithfacebook();
-    } catch (e) {}
+    } catch (e) {
+      showAlertDialog(context,
+          title: "ERROR", content: e.toString(), defaultActionText: "ok");
+    }
   }
 
   @override
