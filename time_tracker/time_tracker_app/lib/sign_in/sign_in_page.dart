@@ -1,18 +1,26 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:time_tracker_app/common_widgets/show_alert_dialog.dart';
 import 'package:time_tracker_app/common_widgets/show_exception_alert.dart';
 import 'package:time_tracker_app/services/auth.dart';
 import 'package:time_tracker_app/sign_in/email_sign_in_page.dart';
+import 'package:time_tracker_app/sign_in/sign_in_bloc.dart';
 import 'package:time_tracker_app/sign_in/sign_in_button.dart';
 import 'package:time_tracker_app/sign_in/social_sign_in_button.dart';
 
 class SignInPage extends StatefulWidget {
+
+  static Widget create(BuildContext context)
+  {
+    return Provider<SignInBloc>(create: (_)=> SignInBloc(),child: SignInPage(),)
+  }
   @override
   _SignInPageState createState() => _SignInPageState();
 }
 
 class _SignInPageState extends State<SignInPage> {
+
   bool _isLoading = false;
 
   void _showSignInError(BuildContext context, Exception exception) {
@@ -25,6 +33,7 @@ class _SignInPageState extends State<SignInPage> {
       exception: exception,
     );
   }
+
 
   Future<void> _signInAnonymosuly(BuildContext context) async {
     try {
@@ -39,7 +48,7 @@ class _SignInPageState extends State<SignInPage> {
   }
 
   void _signInWithEmail(BuildContext context) {
-    final authBase = Provider.of<AuthBase>(context, listen: false);
+    //final authBase = Provider.of<AuthBase>(context, listen: false);
 
     Navigator.of(context).push(MaterialPageRoute<void>(
       fullscreenDialog: true,
