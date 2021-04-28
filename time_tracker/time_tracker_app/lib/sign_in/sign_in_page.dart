@@ -11,7 +11,19 @@ import 'package:time_tracker_app/sign_in/social_sign_in_button.dart';
 class SignInPage extends StatelessWidget {
   final SignInBloc bloc;
 
+<<<<<<< HEAD
   const SignInPage({Key key, @required this.bloc}) : super(key: key);
+=======
+  static Widget create(BuildContext context)
+  {
+    return Provider<SignInBloc>(create: (_)=> SignInBloc(),child: SignInPage(),);
+  }
+  @override
+  _SignInPageState createState() => _SignInPageState();
+}
+
+class _SignInPageState extends State<SignInPage> {
+>>>>>>> 23102feedad40efb743f597f6bdeeddfc00044ee
 
   static Widget create(BuildContext context) {
     final auth = Provider.of<AuthBase>(context, listen: false);
